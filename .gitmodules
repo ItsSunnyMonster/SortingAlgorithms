@@ -1,0 +1,3 @@
+[submodule "AlgorithmVisualizer/deps/glfw"]
+	path = AlgorithmVisualizer/deps/glfw
+	url = https://github.com/ItsSunnyMonster/glfw
