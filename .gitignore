@@ -437,4 +437,6 @@ FodyWeavers.xsd
 **vcxproj.filters
 bin-int
 
+out
+
 !deps/lib/glfw3.lib
