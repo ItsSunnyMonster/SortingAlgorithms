@@ -1,3 +1,6 @@
 [submodule "AlgorithmVisualizer/deps/glfw"]
 	path = AlgorithmVisualizer/deps/glfw
 	url = https://github.com/ItsSunnyMonster/glfw
+[submodule "AlgorithmVisualizer/deps/utfcpp"]
+	path = AlgorithmVisualizer/deps/utfcpp
+	url = https://github.com/ItsSunnyMonster/utfcpp.git

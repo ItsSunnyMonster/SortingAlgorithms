@@ -8,7 +8,7 @@ namespace Algs
 	{
 		uint16_t width = 800;
 		uint16_t height = 600;
-		const char* pszTitle = "Sorting Algorithm Visualizer";
+		const char* pszTitle = "你好";
 	};
 
 	namespace Window

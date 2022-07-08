@@ -4,6 +4,8 @@
 
 #include <glad/glad.h>
 
+#include "ErrorHandling.hpp"
+
 static GLFWwindow* pGlfwWindow;
 
 static void windowResize(GLFWwindow* pWindow, int width, int height)
@@ -15,8 +17,7 @@ void Algs::Window::showWindow(WindowProps props)
 {
 	if (pGlfwWindow == nullptr)
 	{
-		if (!glfwInit())
-			throw std::runtime_error("Unable to initialize GLFW!");
+		AL_ASSERT(glfwInit(), "Unable to create window!");
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -25,8 +26,7 @@ void Algs::Window::showWindow(WindowProps props)
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 		pGlfwWindow = glfwCreateWindow(props.width, props.height, props.pszTitle, nullptr, nullptr);
-		if (pGlfwWindow == nullptr)
-			throw std::runtime_error("Unable to create window!");
+		AL_ASSERT(pGlfwWindow != nullptr, "Unable to create window!");
 
 		glfwSetWindowSizeCallback(pGlfwWindow, windowResize);
 
@@ -44,8 +44,7 @@ void Algs::Window::showWindow(WindowProps props)
 
 		glfwMakeContextCurrent(pGlfwWindow);
 
-		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-			throw std::runtime_error("Failed to initialize OpenGL context!");
+		AL_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Unable to initialize OpenGL context!");
 
 		glfwSwapInterval(1);
 		glfwShowWindow(pGlfwWindow);
