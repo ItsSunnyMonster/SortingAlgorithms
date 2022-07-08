@@ -2,7 +2,7 @@
 
 #include "GLFWinclude.hpp"
 
-namespace Algs
+namespace AV
 {
 	struct WindowProps
 	{

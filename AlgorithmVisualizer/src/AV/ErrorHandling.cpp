@@ -13,7 +13,7 @@ processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
 
 #include "Macros.hpp"
 
-Algs::Exception::Exception(const char* message, uint32_t line, const char* file)
+AV::Exception::Exception(const char* message, uint32_t line, const char* file)
 {
 	std::ostringstream ss;
 	ss	<< "[Line] " << line << "\n"
@@ -22,12 +22,12 @@ Algs::Exception::Exception(const char* message, uint32_t line, const char* file)
 	m_WhatString = std::move(ss.str());
 }
 
-char const* Algs::Exception::what() const
+char const* AV::Exception::what() const
 {
 	return m_WhatString.c_str();
 }
 
-uint8_t Algs::nativeDialog(const char* title, const char* content, uint8_t buttonsMask, uint8_t icon)
+uint8_t AV::nativeDialog(const char* title, const char* content, uint8_t buttonsMask, uint8_t icon)
 {
 	int input = 0;
 	LPWSTR nativeIconCode{};
@@ -71,7 +71,7 @@ uint8_t Algs::nativeDialog(const char* title, const char* content, uint8_t butto
 	}
 }
 
-bool Algs::al_assert(bool condition, std::source_location location)
+bool AV::av_assert(bool condition, std::source_location location)
 {
 	if (condition)
 		return true;
@@ -91,7 +91,7 @@ bool Algs::al_assert(bool condition, std::source_location location)
 	return false;
 }
 
-bool Algs::al_assert(bool condition, const char* msg, std::source_location location)
+bool AV::av_assert(bool condition, const char* msg, std::source_location location)
 {
 	if (condition)
 		return true;

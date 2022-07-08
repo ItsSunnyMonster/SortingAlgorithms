@@ -2,14 +2,14 @@ cmake_minimum_required(VERSION 3.22)
 
 add_executable(AlgorithmVisualizer WIN32
 			   "src/glad/glad.c"
-			   "src/Application.cpp"
-			   "src/Application.hpp"
-			   "src/GLFWinclude.hpp"
-			   "src/Main.cpp"
-			   "src/Window.cpp"
-			   "src/Window.hpp"
-			   "src/ErrorHandling.cpp" 
-			   "src/ErrorHandling.hpp" "src/Macros.hpp")
+			   "src/AV/Application.cpp"
+			   "src/AV/Application.hpp"
+			   "src/AV/GLFWinclude.hpp"
+			   "src/AV/Main.cpp"
+			   "src/AV/Window.cpp"
+			   "src/AV/Window.hpp"
+			   "src/AV/ErrorHandling.cpp" 
+			   "src/AV/ErrorHandling.hpp" "src/AV/Macros.hpp")
 
 target_include_directories(AlgorithmVisualizer PRIVATE "deps/include")
 

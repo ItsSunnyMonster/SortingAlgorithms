@@ -9,20 +9,20 @@
 #include "ErrorHandling.hpp"
 #include "Console.hpp"
 
-void Algs::Application::createApplication()
+void AV::Application::createApplication()
 {
 	initConsole();
 	Window::showWindow();
 	std::cout << "Hello from the console!" << std::endl;
 }
 
-void Algs::Application::terminateApplication()
+void AV::Application::terminateApplication()
 {
 	Window::destroyWindow();
 	freeConsole();
 }
 
-void Algs::Application::run()
+void AV::Application::run()
 {
 	while (!Window::windowShouldClose())
 	{

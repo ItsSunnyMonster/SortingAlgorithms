@@ -4,7 +4,7 @@
 #include <string>
 #include <source_location>
 
-namespace Algs
+namespace AV
 {
 	class Exception : public std::exception
 	{
@@ -29,12 +29,12 @@ namespace Algs
 
 	uint8_t nativeDialog(const char* title, const char* content, uint8_t buttonsMask, uint8_t icon);
 
-	bool al_assert(bool condition, std::source_location location = std::source_location::current());
-	bool al_assert(bool condition, const char* msg, std::source_location location = std::source_location::current());
+	bool av_assert(bool condition, std::source_location location = std::source_location::current());
+	bool av_assert(bool condition, const char* msg, std::source_location location = std::source_location::current());
 }
 
-#define AL_CATCH try { 
+#define AV_CATCH try { 
 
-#define AL_CAUGHT } catch (const ::std::exception& e) { ::Algs::nativeDialog("Exception Caught!", e.what(), AL_DB_OK, AL_DI_ERROR); } catch (...) { ::Algs::nativeDialog("Exception Caught!", "Unknown Exception", AL_DB_OK, AL_DI_ERROR); }
+#define AV_CAUGHT } catch (const ::std::exception& e) { ::AV::nativeDialog("Exception Caught!", e.what(), AL_DB_OK, AL_DI_ERROR); } catch (...) { ::AV::nativeDialog("Exception Caught!", "Unknown Exception", AL_DB_OK, AL_DI_ERROR); }
 
-#define AL_ASSERT(...) if (!al_assert(__VA_ARGS__)) __debugbreak()
+#define AV_ASSERT(...) if (!av_assert(__VA_ARGS__)) __debugbreak()

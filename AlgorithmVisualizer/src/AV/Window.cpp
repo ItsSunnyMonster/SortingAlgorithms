@@ -13,11 +13,11 @@ static void windowResize(GLFWwindow* pWindow, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
-void Algs::Window::showWindow(WindowProps props)
+void AV::Window::showWindow(WindowProps props)
 {
 	if (pGlfwWindow == nullptr)
 	{
-		AL_ASSERT(glfwInit(), "Unable to create window!");
+		AV_ASSERT(glfwInit(), "Unable to create window!");
 
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
@@ -26,7 +26,7 @@ void Algs::Window::showWindow(WindowProps props)
 		glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
 		pGlfwWindow = glfwCreateWindow(props.width, props.height, props.pszTitle, nullptr, nullptr);
-		AL_ASSERT(pGlfwWindow != nullptr, "Unable to create window!");
+		AV_ASSERT(pGlfwWindow != nullptr, "Unable to create window!");
 
 		glfwSetWindowSizeCallback(pGlfwWindow, windowResize);
 
@@ -44,14 +44,14 @@ void Algs::Window::showWindow(WindowProps props)
 
 		glfwMakeContextCurrent(pGlfwWindow);
 
-		AL_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Unable to initialize OpenGL context!");
+		AV_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Unable to initialize OpenGL context!");
 
 		glfwSwapInterval(1);
 		glfwShowWindow(pGlfwWindow);
 	}
 }
 
-void Algs::Window::destroyWindow()
+void AV::Window::destroyWindow()
 {
 	if (!pGlfwWindow)
 		return;
@@ -60,12 +60,12 @@ void Algs::Window::destroyWindow()
 	glfwTerminate();
 }
 
-GLFWwindow* Algs::Window::getGlfwWindow()
+GLFWwindow* AV::Window::getGlfwWindow()
 {
 	return pGlfwWindow;
 }
 
-void Algs::Window::update()
+void AV::Window::update()
 {
 	if (!pGlfwWindow)
 		return;
@@ -73,7 +73,7 @@ void Algs::Window::update()
 	glfwPollEvents();
 }
 
-bool Algs::Window::windowShouldClose()
+bool AV::Window::windowShouldClose()
 {
 	if (!pGlfwWindow)
 		return true;

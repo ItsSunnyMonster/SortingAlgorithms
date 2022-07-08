@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Algs
+namespace AV
 {
 	namespace Application
 	{
