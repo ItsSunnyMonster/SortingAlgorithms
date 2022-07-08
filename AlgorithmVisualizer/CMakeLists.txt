@@ -13,7 +13,9 @@ add_executable(AlgorithmVisualizer WIN32
 
 target_include_directories(AlgorithmVisualizer PRIVATE "deps/include")
 
-target_compile_definitions(AlgorithmVisualizer PRIVATE $<$<CONFIG:Debug>:AL_DEBUG>)
+target_compile_definitions(AlgorithmVisualizer PRIVATE $<$<CONFIG:Debug>:AV_DEBUG>)
+
+
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
