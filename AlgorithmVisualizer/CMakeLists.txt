@@ -30,5 +30,5 @@ target_link_libraries(AlgorithmVisualizer OpenGL::GL)
 
 target_compile_features(AlgorithmVisualizer PUBLIC cxx_std_20)
 if(MSVC)
-    target_compile_options(AlgorithmVisualizer PUBLIC "/Zc:__cplusplus" "/showIncludes")
+    target_compile_options(AlgorithmVisualizer PUBLIC "/Zc:__cplusplus")
 endif()

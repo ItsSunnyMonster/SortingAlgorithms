@@ -438,5 +438,6 @@ FodyWeavers.xsd
 bin-int
 
 out
+build
 
 !deps/lib/glfw3.lib
