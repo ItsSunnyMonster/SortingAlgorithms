@@ -7,7 +7,7 @@ add_executable(AlgorithmVisualizer WIN32
 			   "src/AV/Window.cpp"
 			   "src/AV/Window.hpp"
 			   "src/AV/ErrorHandling.cpp" 
-			   "src/AV/ErrorHandling.hpp" "src/AV/Macros.hpp")
+			   "src/AV/ErrorHandling.hpp" "src/AV/Macros.hpp" "src/pch.hpp")
 
 target_include_directories(AlgorithmVisualizer PRIVATE "deps/include")
 

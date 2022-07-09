@@ -1,15 +1,15 @@
 #pragma once
 
-namespace AV
-{
-	class Exception : public std::exception
-	{
-	public:
-		Exception(const char* message, uint32_t line, const char* file);
-		char const* what() const override;
-	private:
-		std::string m_WhatString;
-	};
+namespace AV {
+
+class Exception : public std::exception {
+public:
+  Exception(const char *message, uint32_t line, const char *file);
+  char const *what() const override;
+
+private:
+  std::string m_WhatString;
+};
 
 #define AL_DB_OK 1
 #define AL_DB_YES 2
@@ -23,14 +23,28 @@ namespace AV
 #define AL_DI_SHIELD 2
 #define AL_DI_WARNING 3
 
-	uint8_t nativeDialog(const char* title, const char* content, uint8_t buttonsMask, uint8_t icon);
+uint8_t nativeDialog(const char *title, const char *content,
+                     uint8_t buttonsMask, uint8_t icon);
 
-	bool av_assert(bool condition, std::source_location location = std::source_location::current());
-	bool av_assert(bool condition, const char* msg, std::source_location location = std::source_location::current());
-}
+bool av_assert(bool condition,
+               std::source_location location = std::source_location::current());
+bool av_assert(bool condition, const char *msg,
+               std::source_location location = std::source_location::current());
 
-#define AV_CATCH try { 
+} // namespace AV
 
-#define AV_CAUGHT } catch (const ::std::exception& e) { ::AV::nativeDialog("Exception Caught!", e.what(), AL_DB_OK, AL_DI_ERROR); } catch (...) { ::AV::nativeDialog("Exception Caught!", "Unknown Exception", AL_DB_OK, AL_DI_ERROR); }
+#define AV_CATCH try {
 
-#define AV_ASSERT(...) if (!av_assert(__VA_ARGS__)) __debugbreak()
+#define AV_CAUGHT                                                              \
+  }                                                                            \
+  catch (const ::std::exception &e) {                                          \
+    ::AV::nativeDialog("Exception Caught!", e.what(), AL_DB_OK, AL_DI_ERROR);  \
+  }                                                                            \
+  catch (...) {                                                                \
+    ::AV::nativeDialog("Exception Caught!", "Unknown Exception", AL_DB_OK,     \
+                       AL_DI_ERROR);                                           \
+  }
+
+#define AV_ASSERT(...)                                                         \
+  if (!av_assert(__VA_ARGS__))                                                 \
+  __debugbreak()
