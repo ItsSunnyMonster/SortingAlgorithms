@@ -1,18 +1,5 @@
 #include "ErrorHandling.hpp"
 
-#include <sstream>
-#include <iostream>
-
-#pragma comment(linker,"\"/manifestdependency:type='win32' \
-name='Microsoft.Windows.Common-Controls' version='6.0.0.0' \
-processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\"")
-
-#include <windows.h>
-#include <CommCtrl.h>
-#include <utf8.h>
-
-#include "Macros.hpp"
-
 AV::Exception::Exception(const char* message, uint32_t line, const char* file)
 {
 	std::ostringstream ss;

@@ -1,7 +1,4 @@
 #pragma once
-#include <stdio.h>
-
-#include <windows.h>
 
 FILE* g_ic_file_cout_stream; FILE* g_ic_file_cin_stream;
 

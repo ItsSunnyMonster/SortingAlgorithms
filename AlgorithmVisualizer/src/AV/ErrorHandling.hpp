@@ -1,9 +1,5 @@
 #pragma once
 
-#include <exception>
-#include <string>
-#include <source_location>
-
 namespace AV
 {
 	class Exception : public std::exception

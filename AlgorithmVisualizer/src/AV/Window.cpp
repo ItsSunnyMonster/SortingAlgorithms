@@ -1,9 +1,5 @@
 #include "Window.hpp"
 
-#include <stdexcept>
-
-#include <glad/glad.h>
-
 #include "ErrorHandling.hpp"
 
 static GLFWwindow* pGlfwWindow;
@@ -44,7 +40,11 @@ void AV::Window::showWindow(WindowProps props)
 
 		glfwMakeContextCurrent(pGlfwWindow);
 
-		AV_ASSERT(gladLoadGLLoader((GLADloadproc)glfwGetProcAddress), "Unable to initialize OpenGL context!");
+		int version = gladLoadGL(glfwGetProcAddress);
+		AV_ASSERT(version, "Unable to initialize OpenGL context!");
+
+		std::cout << "Loaded OpenGL " 
+			<< GLAD_VERSION_MAJOR(version) << "." << GLAD_VERSION_MINOR(version) << "\n";
 
 		glfwSwapInterval(1);
 		glfwShowWindow(pGlfwWindow);

@@ -4,3 +4,6 @@
 [submodule "AlgorithmVisualizer/deps/utfcpp"]
 	path = AlgorithmVisualizer/deps/utfcpp
 	url = https://github.com/ItsSunnyMonster/utfcpp.git
+[submodule "AlgorithmVisualizer/deps/glad"]
+	path = AlgorithmVisualizer/deps/glad
+	url = https://github.com/ItsSunnyMonster/glad.git

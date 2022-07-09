@@ -1,10 +1,5 @@
 #include "Application.hpp"
 
-#include <glad/glad.h>
-
-#include <cmath>
-#include <iostream>
-
 #include "Window.hpp"
 #include "ErrorHandling.hpp"
 #include "Console.hpp"
