@@ -45,6 +45,8 @@ bool av_assert(bool condition, const char *msg, uint32_t line = AV_LINE,
                        AL_DI_ERROR);                                           \
   }
 
+#define AV_THROW(msg) throw ::AV::Exception(msg, AV_LINE, AV_FILE)
+
 #define AV_ASSERT(...)                                                         \
   if (!av_assert(__VA_ARGS__))                                                 \
   __debugbreak()

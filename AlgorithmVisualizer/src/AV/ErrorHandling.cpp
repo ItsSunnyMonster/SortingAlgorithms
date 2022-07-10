@@ -57,6 +57,8 @@ bool AV::av_assert(bool condition, uint32_t line, const char *file) {
   if (condition)
     return true;
 
+#ifdef AV_DEBUG
+
   std::ostringstream ss;
   ss << "Assertion failed!"
      << "\n"
@@ -66,17 +68,20 @@ bool AV::av_assert(bool condition, uint32_t line, const char *file) {
   uint8_t result = nativeDialog("Assertion Failed", ss.str().c_str(),
                                 AL_DB_OK | AL_DB_CANCEL, AL_DI_ERROR);
 
-  if (result != AL_DB_CANCEL) {
-    throw Exception("Assertion failed.", line, file);
-  }
+  if (result == AL_DB_CANCEL)
+    return false;
 
-  return false;
+#endif
+
+  throw Exception("Assertion failed.", line, file);
 }
 
 bool AV::av_assert(bool condition, const char *msg, uint32_t line,
                    const char *file) {
   if (condition)
     return true;
+
+#ifdef AV_DEBUG
 
   std::ostringstream ss;
   ss << "Assertion failed!"
@@ -88,12 +93,13 @@ bool AV::av_assert(bool condition, const char *msg, uint32_t line,
   uint8_t result = nativeDialog("Assertion Failed", ss.str().c_str(),
                                 AL_DB_OK | AL_DB_CANCEL, AL_DI_ERROR);
 
+  if (result == AL_DB_CANCEL)
+    return false;
+
+#endif
+
   std::ostringstream exceptionMsg;
   exceptionMsg << "Assertion failed: " << msg;
 
-  if (result != AL_DB_CANCEL) {
-    throw Exception(exceptionMsg.str().c_str(), line, file);
-  }
-
-  return false;
+  throw Exception(exceptionMsg.str().c_str(), line, file);
 }

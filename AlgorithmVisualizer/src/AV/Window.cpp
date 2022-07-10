@@ -12,6 +12,8 @@ void AV::Window::showWindow(WindowProps props) {
   if (pGlfwWindow == nullptr) {
     AV_ASSERT(glfwInit(), "Unable to create window!");
 
+    AV_ASSERT(false, "BRUH");
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
