@@ -26,11 +26,10 @@ private:
 uint8_t nativeDialog(const char *title, const char *content,
                      uint8_t buttonsMask, uint8_t icon);
 
-bool av_assert(bool condition, uint32_t line = __builtin_LINE(),
-               const char *file = __builtin_FILE());
-bool av_assert(bool condition, const char *msg,
-               uint32_t line = __builtin_LINE(),
-               const char *file = __builtin_FILE());
+bool av_assert(bool condition, uint32_t line = AV_LINE,
+               const char *file = AV_FILE);
+bool av_assert(bool condition, const char *msg, uint32_t line = AV_LINE,
+               const char *file = AV_FILE);
 
 } // namespace AV
 
