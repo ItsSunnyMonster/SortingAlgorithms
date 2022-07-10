@@ -16,6 +16,6 @@ I don't recommend generating the project files with the `cmake` command since I 
 
 Run the `cmake` command to generate your project files.
 
-It does not seem to work for Clang or G++. So my advice would be to MSVC for this. I cannot for the life of me get it to work for the other compilers. Plus, this is on Windows so why would you want to use other compilers in the first place?
+This currently does not support G++. I've tested this on MSVC and Clang and they both seem to work. 
 
-(I would eventually try and solve this compiler problem)
+If you encounter any issues, open an issue to let me know. 

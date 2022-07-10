@@ -53,36 +53,36 @@ uint8_t AV::nativeDialog(const char *title, const char *content,
   }
 }
 
-bool AV::av_assert(bool condition, std::source_location location) {
+bool AV::av_assert(bool condition, uint32_t line, const char *file) {
   if (condition)
     return true;
 
   std::ostringstream ss;
   ss << "Assertion failed!"
      << "\n"
-     << "[Line] " << location.line() << "\n"
-     << "[File] " << location.file_name() << "\n"
+     << "[Line] " << line << "\n"
+     << "[File] " << file << "\n"
      << "Press OK to ignore, Press Cancel to break the debugger.";
   uint8_t result = nativeDialog("Assertion Failed", ss.str().c_str(),
                                 AL_DB_OK | AL_DB_CANCEL, AL_DI_ERROR);
 
   if (result != AL_DB_CANCEL) {
-    throw Exception("Assertion failed.", location.line(), location.file_name());
+    throw Exception("Assertion failed.", line, file);
   }
 
   return false;
 }
 
-bool AV::av_assert(bool condition, const char *msg,
-                   std::source_location location) {
+bool AV::av_assert(bool condition, const char *msg, uint32_t line,
+                   const char *file) {
   if (condition)
     return true;
 
   std::ostringstream ss;
   ss << "Assertion failed!"
      << "\n"
-     << "[Line] " << location.line() << "\n"
-     << "[File] " << location.file_name() << "\n"
+     << "[Line] " << line << "\n"
+     << "[File] " << file << "\n"
      << "[Message] " << msg << "\n"
      << "Press OK to ignore, Press Cancel to break the debugger.";
   uint8_t result = nativeDialog("Assertion Failed", ss.str().c_str(),
@@ -92,8 +92,7 @@ bool AV::av_assert(bool condition, const char *msg,
   exceptionMsg << "Assertion failed: " << msg;
 
   if (result != AL_DB_CANCEL) {
-    throw Exception(exceptionMsg.str().c_str(), location.line(),
-                    location.file_name());
+    throw Exception(exceptionMsg.str().c_str(), line, file);
   }
 
   return false;
